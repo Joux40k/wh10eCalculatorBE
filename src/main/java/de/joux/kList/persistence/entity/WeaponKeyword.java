@@ -2,17 +2,15 @@ package de.joux.kList.persistence.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "weapon_keyword", schema = "wh10e")
 @Data
 public class WeaponKeyword {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "weapon_keyword_sequence", sequenceName = "weapon_keyword_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "weapon_keyword_sequence")
     private long id;
-    @Column
     private String name;
-    @Column
     private String info;
 }

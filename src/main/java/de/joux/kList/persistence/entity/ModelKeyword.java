@@ -1,17 +1,15 @@
 package de.joux.kList.persistence.entity;
 
 import lombok.Data;
-import org.springframework.context.annotation.EnableMBeanExport;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "model_keyword", schema = "wh10e")
 @Data
 public class ModelKeyword {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "model_keyword_sequence", sequenceName = "model_keyword_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "model_keyword_sequence")
     private long id;
-    @Column
     private String name;
 }

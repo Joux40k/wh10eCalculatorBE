@@ -1,6 +1,6 @@
 package de.joux.kList.rest;
 
-import de.joux.kList.persistence.entity.Model;
+import de.joux.kList.persistence.entity.WHModel;
 import de.joux.kList.rest.dto.ModelDTO;
 import de.joux.kList.service.ModelService;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +17,9 @@ public class ModelController {
 
     @PostMapping
     private ResponseEntity<Void> saveModel(@RequestBody ModelDTO modelDto) {
-        Model model = new Model();
-        BeanUtils.copyProperties(modelDto, model);
-        modelService.setModel(model);
+        WHModel WHModel = new WHModel();
+        BeanUtils.copyProperties(modelDto, WHModel);
+        modelService.setModel(WHModel);
         return ResponseEntity.ok().build();
     }
 }

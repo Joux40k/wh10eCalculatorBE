@@ -1,30 +1,23 @@
 package de.joux.kList.persistence.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
+
 
 @Entity
-@Table(name = "model", schema = "wh10e")
 @Data
-public class Model {
+public class WHModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "model_sequence", sequenceName = "model_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "model_sequence")
     private long id;
-    @Column
     private String name;
-    @Column
     private String move;
-    @Column
     private String toughness;
-    @Column
     private String save;
-    @Column(name = "invulnerable_save")
     private String invulnerableSave;
-    @Column
     private String wounds;
-    @Column
     private String leadership;
-    @Column(name = "objective_control")
     private String objectiveControl;
 }

@@ -2,17 +2,15 @@ package de.joux.kList.persistence.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "wargear", schema = "wh10e")
 @Data
 public class Wargear {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "wargear_sequence", sequenceName = "wargear_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "wargear_sequence")
     private long id;
-    @Column
     private String name;
-    @Column
     private String effect;
 }
